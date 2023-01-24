@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Factura" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="337919af-5a9a-4632-8d53-843cbad13400">
+	<parameter name="nro" class="java.lang.String"/>
+	<parameter name="fecha" class="java.sql.Date"/>
+	<parameter name="nombre_cliente" class="java.lang.String"/>
+	<parameter name="identificacion" class="java.lang.String"/>
+	<parameter name="lineasFactura" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="188" splitType="Stretch">
+			<image onErrorType="Icon">
+				<reportElement x="60" y="16" width="50" height="50" uuid="7f6fcabc-bf64-4c39-a358-14a5b75c1a23"/>
+				<imageExpression><![CDATA["classpath:jrxml/logo.png"
+]]></imageExpression>
+			</image>
+			<rectangle>
+				<reportElement x="170" y="11" width="240" height="60" forecolor="#3DAEE9" backcolor="#3DAEE9" uuid="67a48c93-c951-4c40-a3f3-7d4862efe34e"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="240" y="26" width="100" height="30" forecolor="#FFFFFF" uuid="d78202ac-ac1b-4ee3-9749-18230d6b1635"/>
+				<textElement textAlignment="Center">
+					<font size="19" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FACTURA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="90" width="60" height="30" uuid="cf8c4085-b3e8-4354-aa49-d6a25ba75871"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLIENTE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="130" width="100" height="30" uuid="4ac2b1bd-d4ef-41bb-90e4-64f5f4505928"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RUC/CEDULA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="90" width="140" height="30" uuid="39ca2398-a9a3-495c-a08f-195194d88dfe"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NUMERO DE FACTURA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="140" width="60" height="30" uuid="a5d1e95e-f000-4a52-bb87-9c3abef37b18"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="420" y="90" width="100" height="30" uuid="e33b5946-3ba0-4c55-9eaa-96814e4e4f79"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="340" y="140" width="100" height="30" uuid="6ae8c52f-096e-4955-ae81-dc605e0cfc11"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha}]]></textFieldExpression>
+				<patternExpression><![CDATA["dd-MM-YYYY"]]></patternExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="90" width="140" height="30" uuid="e9d9db37-cd24-41b5-9704-0d3c56845967"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombre_cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="130" width="100" height="30" uuid="9734b804-62f6-410c-b6d2-2472b6994acb"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{identificacion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="41" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="560" height="40" uuid="b6187d58-d137-4da0-902c-dfaa5280f899"/>
+				<dataSourceExpression><![CDATA[$P{lineasFactura}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["classpath:jrxml/detallefactura.jasper"
+
+]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>
